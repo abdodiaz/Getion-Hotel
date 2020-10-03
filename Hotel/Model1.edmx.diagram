@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bf0bd953193148e9b751c8c46044cfbe" Name="Diagram1" ZoomLevel="116">
+        <EntityTypeShape EntityType="PhotelModel.Client" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhotelModel.Emploiye" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhotelModel.Reservation" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhotelModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="PhotelModel.FK__Reservati__CodeC__5DCAEF64" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PhotelModel.Chambre" Width="1.5" PointX="0.75" PointY="3" />
+        <AssociationConnector Association="PhotelModel.FK__Reservati__NumCh__5EBF139D" />
+        <EntityTypeShape EntityType="PhotelModel.Payment" Width="1.5" PointX="5.25" PointY="3.75" />
+        <AssociationConnector Association="PhotelModel.FK__Payment__NumR__6E01572D" />
+        <EntityTypeShape EntityType="PhotelModel.mailing" Width="1.5" PointX="3.375" PointY="7.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

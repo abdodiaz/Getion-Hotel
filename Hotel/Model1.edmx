@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PhotelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Chambre">
+          <Key>
+            <PropertyRef Name="NumChambre" />
+          </Key>
+          <Property Name="NumChambre" Type="int" Nullable="false" />
+          <Property Name="Etage" Type="int" />
+          <Property Name="typechambre" Type="varchar" MaxLength="50" />
+          <Property Name="Prixchambre" Type="money" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="CodeClient" />
+          </Key>
+          <Property Name="CodeClient" Type="int" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="30" />
+          <Property Name="Prènom" Type="varchar" MaxLength="30" />
+          <Property Name="Civillité" Type="varchar" MaxLength="15" />
+          <Property Name="CIN" Type="varchar" MaxLength="30" />
+          <Property Name="Pays" Type="varchar" MaxLength="30" />
+          <Property Name="Ville" Type="varchar" MaxLength="30" />
+          <Property Name="Email" Type="nvarchar" MaxLength="40" />
+          <Property Name="Telephon" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Emploiye">
+          <Key>
+            <PropertyRef Name="NumEmp" />
+          </Key>
+          <Property Name="NumEmp" Type="int" Nullable="false" />
+          <Property Name="NomEmp" Type="varchar" MaxLength="1" />
+          <Property Name="DateEmp" Type="datetime" />
+          <Property Name="Salaire" Type="money" />
+          <Property Name="Fonction" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="mailing">
+          <Key>
+            <PropertyRef Name="idMail" />
+          </Key>
+          <Property Name="idMail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="PaymentTotal" Type="money" />
+          <Property Name="NumR" Type="int" />
+          <Property Name="PaymentType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="NumR" />
+          </Key>
+          <Property Name="NumR" Type="int" Nullable="false" />
+          <Property Name="CodeClient" Type="int" />
+          <Property Name="Dated" Type="datetime" />
+          <Property Name="Datef" Type="datetime" />
+          <Property Name="NumChambre" Type="int" />
+          <Property Name="NombrePlace" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__Payment__NumR__6E01572D">
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservation">
+              <PropertyRef Name="NumR" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="NumR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__CodeC__5DCAEF64">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="CodeClient" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="CodeClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__NumCh__5EBF139D">
+          <End Role="Chambre" Type="Self.Chambre" Multiplicity="0..1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chambre">
+              <PropertyRef Name="NumChambre" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="NumChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ClientNonPayee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="PhotelModelStoreContainer">
+          <EntitySet Name="Chambre" EntityType="Self.Chambre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Emploiye" EntityType="Self.Emploiye" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mailing" EntityType="Self.mailing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Payment__NumR__6E01572D" Association="Self.FK__Payment__NumR__6E01572D">
+            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__CodeC__5DCAEF64" Association="Self.FK__Reservati__CodeC__5DCAEF64">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__NumCh__5EBF139D" Association="Self.FK__Reservati__NumCh__5EBF139D">
+            <End Role="Chambre" EntitySet="Chambre" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PhotelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="CodeClient" />
+          </Key>
+          <Property Name="CodeClient" Type="Int32" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Prènom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Civillité" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CIN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Pays" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Ville" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Telephon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Reservation" Relationship="Self.FK__Reservati__CodeC__5DCAEF64" FromRole="Client" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="Emploiye">
+          <Key>
+            <PropertyRef Name="NumEmp" />
+          </Key>
+          <Property Name="NumEmp" Type="Int32" Nullable="false" />
+          <Property Name="NomEmp" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="DateEmp" Type="DateTime" Precision="3" />
+          <Property Name="Salaire" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Fonction" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="NumR" />
+          </Key>
+          <Property Name="NumR" Type="Int32" Nullable="false" />
+          <Property Name="CodeClient" Type="Int32" />
+          <Property Name="Dated" Type="DateTime" Precision="3" />
+          <Property Name="Datef" Type="DateTime" Precision="3" />
+          <Property Name="NumChambre" Type="Int32" />
+          <Property Name="NombrePlace" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Reservati__CodeC__5DCAEF64" FromRole="Reservation" ToRole="Client" />
+          <NavigationProperty Name="Chambre" Relationship="PhotelModel.FK__Reservati__NumCh__5EBF139D" FromRole="Reservation" ToRole="Chambre" />
+          <NavigationProperty Name="Payment" Relationship="PhotelModel.FK__Payment__NumR__6E01572D" FromRole="Reservation" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__Reservati__CodeC__5DCAEF64">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="CodeClient" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="CodeClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PhotelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Emploiye" EntityType="Self.Emploiye" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK__Reservati__CodeC__5DCAEF64" Association="Self.FK__Reservati__CodeC__5DCAEF64">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <EntitySet Name="Chambre" EntityType="PhotelModel.Chambre" />
+          <AssociationSet Name="FK__Reservati__NumCh__5EBF139D" Association="PhotelModel.FK__Reservati__NumCh__5EBF139D">
+            <End Role="Chambre" EntitySet="Chambre" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <FunctionImport Name="ClientNonPayee" ReturnType="Collection(PhotelModel.ClientNonPayee_Result)" />
+          <EntitySet Name="Payment" EntityType="PhotelModel.Payment" />
+          <AssociationSet Name="FK__Payment__NumR__6E01572D" Association="PhotelModel.FK__Payment__NumR__6E01572D">
+            <End Role="Reservation" EntitySet="Reservation" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <EntitySet Name="mailing" EntityType="PhotelModel.mailing" />
+        </EntityContainer>
+        <EntityType Name="Chambre">
+          <Key>
+            <PropertyRef Name="NumChambre" />
+          </Key>
+          <Property Name="NumChambre" Type="Int32" Nullable="false" />
+          <Property Name="Etage" Type="Int32" />
+          <Property Name="typechambre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Prixchambre" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Reservation" Relationship="PhotelModel.FK__Reservati__NumCh__5EBF139D" FromRole="Chambre" ToRole="Reservation" />
+        </EntityType>
+        <Association Name="FK__Reservati__NumCh__5EBF139D">
+          <End Type="PhotelModel.Chambre" Role="Chambre" Multiplicity="0..1" />
+          <End Type="PhotelModel.Reservation" Role="Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chambre">
+              <PropertyRef Name="NumChambre" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="NumChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="ClientNonPayee_Result">
+          <Property Type="Int32" Name="numr" Nullable="false" />
+          <Property Type="String" Name="nomComplet" Nullable="false" MaxLength="75" />
+        </ComplexType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentTotal" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NumR" Type="Int32" />
+          <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Reservation" Relationship="PhotelModel.FK__Payment__NumR__6E01572D" FromRole="Payment" ToRole="Reservation" />
+        </EntityType>
+        <Association Name="FK__Payment__NumR__6E01572D">
+          <End Type="PhotelModel.Reservation" Role="Reservation" Multiplicity="0..1" />
+          <End Type="PhotelModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reservation">
+              <PropertyRef Name="NumR" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="NumR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="mailing">
+          <Key>
+            <PropertyRef Name="idMail" />
+          </Key>
+          <Property Name="idMail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PhotelModelStoreContainer" CdmEntityContainer="PhotelEntities">
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="PhotelModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="CodeClient" ColumnName="CodeClient" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prènom" ColumnName="Prènom" />
+                <ScalarProperty Name="Civillité" ColumnName="Civillité" />
+                <ScalarProperty Name="CIN" ColumnName="CIN" />
+                <ScalarProperty Name="Pays" ColumnName="Pays" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telephon" ColumnName="Telephon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emploiye">
+            <EntityTypeMapping TypeName="PhotelModel.Emploiye">
+              <MappingFragment StoreEntitySet="Emploiye">
+                <ScalarProperty Name="NumEmp" ColumnName="NumEmp" />
+                <ScalarProperty Name="NomEmp" ColumnName="NomEmp" />
+                <ScalarProperty Name="DateEmp" ColumnName="DateEmp" />
+                <ScalarProperty Name="Salaire" ColumnName="Salaire" />
+                <ScalarProperty Name="Fonction" ColumnName="Fonction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservation">
+            <EntityTypeMapping TypeName="PhotelModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="NumR" ColumnName="NumR" />
+                <ScalarProperty Name="CodeClient" ColumnName="CodeClient" />
+                <ScalarProperty Name="Dated" ColumnName="Dated" />
+                <ScalarProperty Name="Datef" ColumnName="Datef" />
+                <ScalarProperty Name="NumChambre" ColumnName="NumChambre" />
+                <ScalarProperty Name="NombrePlace" ColumnName="NombrePlace" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PhotelModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chambre">
+            <EntityTypeMapping TypeName="PhotelModel.Chambre">
+              <MappingFragment StoreEntitySet="Chambre">
+                <ScalarProperty Name="Prixchambre" ColumnName="Prixchambre" />
+                <ScalarProperty Name="typechambre" ColumnName="typechambre" />
+                <ScalarProperty Name="Etage" ColumnName="Etage" />
+                <ScalarProperty Name="NumChambre" ColumnName="NumChambre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ClientNonPayee" FunctionName="PhotelModel.Store.ClientNonPayee">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PhotelModel.ClientNonPayee_Result">
+                <ScalarProperty Name="numr" ColumnName="numr" />
+                <ScalarProperty Name="nomComplet" ColumnName="nomComplet" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Payment">
+            <EntityTypeMapping TypeName="PhotelModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="NumR" ColumnName="NumR" />
+                <ScalarProperty Name="PaymentTotal" ColumnName="PaymentTotal" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mailing">
+            <EntityTypeMapping TypeName="PhotelModel.mailing">
+              <MappingFragment StoreEntitySet="mailing">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="idMail" ColumnName="idMail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

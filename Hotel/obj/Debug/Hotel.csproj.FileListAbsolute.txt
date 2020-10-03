@@ -1,0 +1,41 @@
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\bin\Debug\Hotel.exe.config
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\bin\Debug\Hotel.exe
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\bin\Debug\Hotel.pdb
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\obj\Debug\Hotel.csprojAssemblyReference.cache
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\obj\Debug\Hotel.Login.resources
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\obj\Debug\Hotel.Properties.Resources.resources
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\obj\Debug\Hotel.csproj.GenerateResource.cache
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\obj\Debug\Hotel.exe
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\obj\Debug\Hotel.pdb
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\bin\Debug\Bunifu_UI_v1.5.3.dll
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\bin\Debug\Bunifu_UI_v1.5.3.xml
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\obj\Debug\Hotel.csproj.CopyComplete
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\obj\Debug\Hotel.Gestion.resources
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\obj\Debug\Hotel.Client.resources
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\obj\Debug\Hotel.Chambre.resources
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\obj\Debug\Hotel.Emploiyents.resources
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\obj\Debug\Hotel.Reglement.resources
+C:\Users\Dazia-PC\source\repos\Hotel\Hotel\obj\Debug\Hotel.Reservation.resources
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\bin\Debug\Hotel.exe.config
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\bin\Debug\Hotel.exe
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\bin\Debug\Hotel.pdb
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\bin\Debug\EntityFramework.dll
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\bin\Debug\Bunifu_UI_v1.5.3.xml
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\bin\Debug\EntityFramework.xml
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\bin\Debug\fr\EntityFramework.resources.dll
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\obj\Debug\Hotel.csprojAssemblyReference.cache
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\obj\Debug\Hotel.Chambre1.resources
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\obj\Debug\Hotel.Client1.resources
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\obj\Debug\Hotel.Gestion1.resources
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\obj\Debug\Hotel.Login1.resources
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\obj\Debug\Hotel.Properties.Resources.resources
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\obj\Debug\Hotel.Reglement1.resources
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\obj\Debug\Hotel.Reservation1.resources
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\obj\Debug\Hotel.csproj.GenerateResource.cache
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\obj\Debug\Hotel.csproj.CoreCompileInputs.cache
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\obj\Debug\Hotel.csproj.CopyComplete
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\obj\Debug\Hotel.exe
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\obj\Debug\Hotel.pdb
+C:\Users\ABDELBARRE DAZIA\Desktop\Hotel\Hotel\obj\Debug\Hotel.Mails.resources

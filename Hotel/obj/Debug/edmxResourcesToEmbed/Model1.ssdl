@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PhotelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Chambre">
+    <Key>
+      <PropertyRef Name="NumChambre" />
+    </Key>
+    <Property Name="NumChambre" Type="int" Nullable="false" />
+    <Property Name="Etage" Type="int" />
+    <Property Name="typechambre" Type="varchar" MaxLength="50" />
+    <Property Name="Prixchambre" Type="money" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="CodeClient" />
+    </Key>
+    <Property Name="CodeClient" Type="int" Nullable="false" />
+    <Property Name="Nom" Type="varchar" MaxLength="30" />
+    <Property Name="Prènom" Type="varchar" MaxLength="30" />
+    <Property Name="Civillité" Type="varchar" MaxLength="15" />
+    <Property Name="CIN" Type="varchar" MaxLength="30" />
+    <Property Name="Pays" Type="varchar" MaxLength="30" />
+    <Property Name="Ville" Type="varchar" MaxLength="30" />
+    <Property Name="Email" Type="nvarchar" MaxLength="40" />
+    <Property Name="Telephon" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Emploiye">
+    <Key>
+      <PropertyRef Name="NumEmp" />
+    </Key>
+    <Property Name="NumEmp" Type="int" Nullable="false" />
+    <Property Name="NomEmp" Type="varchar" MaxLength="1" />
+    <Property Name="DateEmp" Type="datetime" />
+    <Property Name="Salaire" Type="money" />
+    <Property Name="Fonction" Type="varchar" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="mailing">
+    <Key>
+      <PropertyRef Name="idMail" />
+    </Key>
+    <Property Name="idMail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="int" Nullable="false" />
+    <Property Name="PaymentDate" Type="datetime" />
+    <Property Name="PaymentTotal" Type="money" />
+    <Property Name="NumR" Type="int" />
+    <Property Name="PaymentType" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="NumR" />
+    </Key>
+    <Property Name="NumR" Type="int" Nullable="false" />
+    <Property Name="CodeClient" Type="int" />
+    <Property Name="Dated" Type="datetime" />
+    <Property Name="Datef" Type="datetime" />
+    <Property Name="NumChambre" Type="int" />
+    <Property Name="NombrePlace" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__Payment__NumR__6E01572D">
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="0..1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reservation">
+        <PropertyRef Name="NumR" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="NumR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reservati__CodeC__5DCAEF64">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="CodeClient" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="CodeClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Reservati__NumCh__5EBF139D">
+    <End Role="Chambre" Type="Self.Chambre" Multiplicity="0..1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Chambre">
+        <PropertyRef Name="NumChambre" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="NumChambre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="ClientNonPayee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="PhotelModelStoreContainer">
+    <EntitySet Name="Chambre" EntityType="Self.Chambre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Emploiye" EntityType="Self.Emploiye" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mailing" EntityType="Self.mailing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Payment__NumR__6E01572D" Association="Self.FK__Payment__NumR__6E01572D">
+      <End Role="Reservation" EntitySet="Reservation" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reservati__CodeC__5DCAEF64" Association="Self.FK__Reservati__CodeC__5DCAEF64">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Reservation" EntitySet="Reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Reservati__NumCh__5EBF139D" Association="Self.FK__Reservati__NumCh__5EBF139D">
+      <End Role="Chambre" EntitySet="Chambre" />
+      <End Role="Reservation" EntitySet="Reservation" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
